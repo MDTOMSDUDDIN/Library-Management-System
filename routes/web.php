@@ -21,3 +21,6 @@ board');
 Route::get('/home',[AdminController::class,'index']);
 Route::get('/category_page',[AdminController::class,'category_page'])->name('admin.category.page');
 Route::post('/add/category',[AdminController::class,'add_category'])->name('admin.add.category');
+Route::get('/category/delete/{id}',[AdminController::class,'Delete_category'])->name('admin.category.Delete');
+Route::get('/category/edit/{id}',[AdminController::class,'edit_category'])->name('admin.category.Edit');
+Route::post('/category/update/{id}',[AdminController::class,'update_category'])->name('admin.category.update');

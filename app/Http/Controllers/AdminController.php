@@ -25,7 +25,10 @@ class AdminController extends Controller
     }
 
     public function category_page(){
-        return view('admin.category');
+        $categories=Category::all();
+        return view('admin.category',[
+            'categories'=>$categories,
+        ]);
     }
 
     public function add_category(Request $request){
@@ -38,8 +41,33 @@ class AdminController extends Controller
             'cat_title' => $request->category,
         ]);
         $category->save();
+        return back()->with('success','Category add successfully !');
+    }
 
-        return back()->with('success','category add successfully !');
-    
+    public function Delete_category($id){
+        $category=Category::find($id);
+        $category->delete();
+
+       return back()->with('delete','Category Delete successfully !');
+
+    }
+
+    public function edit_category($id){
+        $category=Category::find($id);
+        return view('admin.category-edit',[
+            'category'=>$category,
+        ]);
+    }
+
+    public function update_category(Request $request,$id){
+        $category=Category::findOrFail($id);
+        $request->validate([
+            'category' => 'required|string|max: 100',
+        ]);
+
+        $category->update([
+            'cat_title' => $request->category,
+        ]);
+        return redirect()->route('admin.category.page')->with('success','Category Updated successfully !');
     }
 }
