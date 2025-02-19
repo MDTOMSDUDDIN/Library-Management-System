@@ -19,3 +19,5 @@ board');
 
 
 Route::get('/home',[AdminController::class,'index']);
+Route::get('/category_page',[AdminController::class,'category_page'])->name('admin.category.page');
+Route::post('/add/category',[AdminController::class,'add_category'])->name('admin.add.category');

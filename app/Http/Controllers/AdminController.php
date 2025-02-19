@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,5 +22,24 @@ class AdminController extends Controller
         else{
           return redirect()->back();
         }
+    }
+
+    public function category_page(){
+        return view('admin.category');
+    }
+
+    public function add_category(Request $request){
+        $request->validate([
+            'category' => 'required|string|max: 100',
+        ]);
+    
+        
+        $category = Category::create([
+            'cat_title' => $request->category,
+        ]);
+        $category->save();
+
+        return back()->with('success','category add successfully !');
+    
     }
 }
