@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -69,5 +70,44 @@ class AdminController extends Controller
             'cat_title' => $request->category,
         ]);
         return redirect()->route('admin.category.page')->with('success','Category Updated successfully !');
+    }
+
+    public function add_book(){
+        $category=Category::all();
+        return view('admin.add-book',[
+            'category'=>$category,
+        ]);
+    }
+
+    public function store_book(Request $request){
+
+
+        $book=new Book();
+        $book->title=$request->title;
+        $book->author_name=$request->author_name;
+        $book->category_id=$request->category;
+        $book->price=$request->price;
+        $book->description=$request->description;
+        $book->quantity=$request->quantity;
+
+        $book_image = $request->book_img;
+        if ($book_image) {
+            $book_image_name = time() . '.' . $book_image->getClientOriginalExtension();
+            $request->book_img->move('images/book', $book_image_name);
+        
+            $book->book_img = $book_image_name;
+        }
+
+        $author_image = $request->author_img;
+        if ($author_image) {
+            $author_image_name = time() . '.' . $author_image->getClientOriginalExtension();
+            $request->author_img->move('images/auhtor', $author_image_name);
+        
+            $book->author_img = $author_image_name;
+        }
+        
+        $book->save();
+        return  back()->with('success','Books Add successfully !');
+
     }
 }
