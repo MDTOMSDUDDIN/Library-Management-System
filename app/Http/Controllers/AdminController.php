@@ -108,6 +108,13 @@ class AdminController extends Controller
         
         $book->save();
         return  back()->with('success','Books Add successfully !');
-
     }
+
+    public function show_book(){
+        $books=Book::all();
+        return view('admin.show-book',[
+            'books'=>$books,
+        ]);
+    }
+
 }

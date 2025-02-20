@@ -192,7 +192,7 @@
               <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Books </a>
                 <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                   <li><a href="{{ route('add.book') }}">Add Books</a></li>
-                  <li><a href="#">Page</a></li>
+                  <li><a href="{{ route('show.book') }}">Show Book</a></li>
                   <li><a href="#">Page</a></li>
                 </ul>
               </li>
