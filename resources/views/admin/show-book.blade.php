@@ -8,10 +8,16 @@
                         <h1>Add Books </h1>
                     </div>
                     @if(Session::has('success'))
-                    <div class="alert alert-success">{{ Session::get('success') }}</div>
+                    <div class="alert alert-danger">{{ Session::get('success') }}</div>
                     @endif
                     
                     <div class="card-body">
+                        @if (session()->has('delete'))
+                            <div class="alert alert-danger">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
+                                {{ session('delete') }}
+                            </div>
+                        @endif
                         <table class="table table-responsive">
                           <thead>
                             <tr>
@@ -23,6 +29,7 @@
                                 <th>Book Image </th>
                                 <th>Author Image </th>
                                 <th>Category Name</th>
+                                <th>Action</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -40,6 +47,9 @@
                                         <img src="{{ asset('images/auhtor')}}/{{ $book->author_img }}" alt="">
                                     </td>
                                     <td>{{ $book->category->cat_title }}</td>
+                                    <td>
+                                        <a onclick="confirmation(event)" href="{{ route('delete.book',['id'=>$book->id]) }}" class="btn btn-danger">Delete</a>
+                                    </td>
                                 </tr>
                             @endforeach
                           </tbody>
@@ -51,15 +61,24 @@
         </div>
     </div>
 @endsection
-{{-- $table->id();
-$table->string('title')->nullable();
-$table->string('author_name')->nullable();
-$table->string('price')->nullable();
-$table->longText('description')->nullable();
-$table->string('quantity')->nullable();
-$table->string('book_img')->nullable();
-$table->string('author_img')->nullable();
+    <script type="text/javascript">
+        function confirmation(ev){
+            ev.preventDefault();
+            var urlToRedirect= ev.currentTarget.getAttribute('href');
+            console.log(urlToRedirect);
 
-$table->unsignedBigInteger('category_id');
-$table->foreign('category_id')->references('id')->on('categories')->cascadeOnDelete();
-$table->timestamps(); --}}
+            swal({ 
+                title: "Are you sure you want to delete this Book ?", 
+                text: "You will not be able to revert this!", 
+                icon: "warning",
+                buttons: true, 
+                dangerMode: true, 
+            })
+            .then((willDelete) => { 
+                if (willDelete) { 
+                    window.location.href = urlToRedirect; 
+                }
+            });
+
+        }
+    </script>

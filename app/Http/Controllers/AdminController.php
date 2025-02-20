@@ -24,7 +24,7 @@ class AdminController extends Controller
           return redirect()->back();
         }
     }
-
+//--------------------------------------------------------------------------------
     public function category_page(){
         $categories=Category::all();
         return view('admin.category',[
@@ -115,6 +115,14 @@ class AdminController extends Controller
         return view('admin.show-book',[
             'books'=>$books,
         ]);
+    }
+
+    
+    public  function delete_book($id){
+        $books=Book::find($id);
+        $books->delete();
+
+        return  back()->with('delete','Books Deleted successfully !');
     }
 
 }
