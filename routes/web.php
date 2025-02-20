@@ -29,3 +29,5 @@ Route::get('/add/book',[AdminController::class,'add_book'])->name('add.book');
 Route::post('/store/book',[AdminController::class,'store_book'])->name('store.book');
 Route::get('/show/book',[AdminController::class,'show_book'])->name('show.book');
 Route::get('/delete/book/{id}',[AdminController::class,'delete_book'])->name('delete.book');
+Route::get('/edit/book/{id}',[AdminController::class,'edit_book'])->name('edit.book');
+Route::post('/update/book/{id}',[AdminController::class,'update_book'])->name('update.book');

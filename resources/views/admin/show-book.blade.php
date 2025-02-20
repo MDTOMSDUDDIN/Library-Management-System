@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-11">
                 <div class="card">
                     <div class="card-header text-center fs-2 text-white bg-success">
                         <h1>Add Books </h1>
@@ -48,6 +48,7 @@
                                     </td>
                                     <td>{{ $book->category->cat_title }}</td>
                                     <td>
+                                        <a class="btn btn-info" href="{{ route('edit.book',['id'=>$book->id]) }}">Edit</a>
                                         <a onclick="confirmation(event)" href="{{ route('delete.book',['id'=>$book->id]) }}" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
