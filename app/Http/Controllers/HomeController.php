@@ -13,4 +13,11 @@ class HomeController extends Controller
             'books'=>$books,
         ]);
     }
+
+    public function book_details($id){
+        $books=Book::find($id);
+        return view('home.book-details',[
+            'books'=>$books,
+        ]);
+    }
 }

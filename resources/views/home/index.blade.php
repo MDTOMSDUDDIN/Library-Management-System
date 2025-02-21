@@ -216,8 +216,11 @@
                                       Total<br><strong>20</strong><br>
                                   </span>
                                   <div class="text-button">
-                                      <a href="details.html">View Item Details</a>
+                                      <a href="{{ route('home.book.details',['id'=>$book->id]) }}">View Item Details</a>
                                   </div>
+                                  {{-- <div class="text-button">
+                                      <a href="details.html">View Item Details</a>
+                                  </div> --}}
                               </div>
                           </div>
                       </div>

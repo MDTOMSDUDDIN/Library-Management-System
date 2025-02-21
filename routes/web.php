@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',[HomeController::class,'index']);
+Route::get('/book-details/{id}',[HomeController::class,'book_details'])->name('home.book.details');
 
 Route::middleware([
     'auth:sanctum',
