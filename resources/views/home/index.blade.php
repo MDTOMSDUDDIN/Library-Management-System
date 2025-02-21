@@ -193,22 +193,24 @@
               </div>
               <div class="col-lg-12">
                   <div class="row grid">
+                 @foreach ($books as $book)
                       <div class="col-lg-6 currently-market-item all msc">
                           <div class="item">
                               <div class="left-image">
-                                  <img src="assets/images/book1.webp" alt=""
-                                      style="border-radius: 20px; min-width: 195px;">
+                                  {{-- <img src="assets/images/book1.webp" alt="" style="border-radius: 20px; min-width: 195px;"> --}}
+                                  <img src="{{ asset('images/book') }}/{{ $book->book_img }}" alt="" style="border-radius: 20px; min-width: 195px; height:300px;">
+
                               </div>
                               <div class="right-content">
-                                  <h4>Sarah Maas</h4>
+                                  <h4>{{  $book->author_name }}</h4>
                                   <span class="author">
-                                      <img src="assets/images/author.jpg" alt=""
-                                          style="max-width: 50px; border-radius: 50%;">
-                                      <h6>Robert T Kiyosaki</h6>
+                                      {{-- <img src="assets/images/author.jpg" alt=""style="max-width: 50px; border-radius: 50%;"> --}}
+                                      <img src="{{ asset('images/auhtor') }}/{{ $book->author_img }}" alt="" style="max-width: 50px; border-radius: 50%;">
+                                      <h6>{{  $book->author_name }}</h6>
                                   </span>
                                   <div class="line-dec"></div>
                                   <span class="bid">
-                                      Current Available<br><strong>10</strong><br>
+                                      Current Available<br><strong>{{ $book->quantity }}</strong><br>
                                   </span>
                                   <span class="ends">
                                       Total<br><strong>20</strong><br>
@@ -219,94 +221,7 @@
                               </div>
                           </div>
                       </div>
-
-
-                      <div class="col-lg-6 currently-market-item all msc">
-                          <div class="item">
-                              <div class="left-image">
-                                  <img src="assets/images/book2.webp" alt=""
-                                      style="border-radius: 20px; min-width: 195px;">
-                              </div>
-                              <div class="right-content">
-                                  <h4>Broken Blade</h4>
-                                  <span class="author">
-                                      <img src="assets/images/author.jpg" alt=""
-                                          style="max-width: 50px; border-radius: 50%;">
-                                      <h6>Robert T Kiyosaki</h6>
-                                  </span>
-                                  <div class="line-dec"></div>
-                                  <span class="bid">
-                                      Current Available<br><strong>10</strong><br>
-                                  </span>
-                                  <span class="ends">
-                                      Total<br><strong>20</strong><br>
-                                  </span>
-                                  <div class="text-button">
-                                      <a href="details.html">View Item Details</a>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-
-
-
-                      <div class="col-lg-6 currently-market-item all msc">
-                          <div class="item">
-                              <div class="left-image">
-                                  <img src="assets/images/book3.webp" alt=""
-                                      style="border-radius: 20px; min-width: 195px;">
-                              </div>
-                              <div class="right-content">
-                                  <h4>Dwarves</h4>
-                                  <span class="author">
-                                      <img src="assets/images/author.jpg" alt=""
-                                          style="max-width: 50px; border-radius: 50%;">
-                                      <h6>Robert T Kiyosaki</h6>
-                                  </span>
-                                  <div class="line-dec"></div>
-                                  <span class="bid">
-                                      Current Available<br><strong>10</strong><br>
-                                  </span>
-                                  <span class="ends">
-                                      Total<br><strong>20</strong><br>
-                                  </span>
-                                  <div class="text-button">
-                                      <a href="details.html">View Item Details</a>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-
-
-
-                      <div class="col-lg-6 currently-market-item all msc">
-                          <div class="item">
-                              <div class="left-image">
-                                  <img src="assets/images/book4.webp" alt=""
-                                      style="border-radius: 20px; min-width: 195px;">
-                              </div>
-                              <div class="right-content">
-                                  <h4>Steven Erikson</h4>
-                                  <span class="author">
-                                      <img src="assets/images/author.jpg" alt=""
-                                          style="max-width: 50px; border-radius: 50%;">
-                                      <h6>Robert T Kiyosaki</h6>
-                                  </span>
-                                  <div class="line-dec"></div>
-                                  <span class="bid">
-                                      Current Available<br><strong>10</strong><br>
-                                  </span>
-                                  <span class="ends">
-                                      Total<br><strong>20</strong><br>
-                                  </span>
-                                  <div class="text-button">
-                                      <a href="details.html">View Item Details</a>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-
-
+                 @endforeach
                   </div>
               </div>
           </div>

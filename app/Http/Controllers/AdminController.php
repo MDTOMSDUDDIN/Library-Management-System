@@ -17,7 +17,10 @@ class AdminController extends Controller
             if ($user_type == 'admin') {
                 return view('admin.index'); 
             } elseif($user_type == 'user'){
-                return view('home.index');
+                $books=Book::all();
+                return view('home.index',[
+                    'books'=>$books,
+                ]);
             }
         }
         else{
