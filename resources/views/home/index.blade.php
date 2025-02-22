@@ -181,6 +181,14 @@
                       <h2><em>Items</em> Currently In The Market.</h2>
                   </div>
               </div>
+
+              @if (session()->has('message'))
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
+                    {{ session('message') }}
+                </div>
+              @endif
+
               <div class="col-lg-6">
                   <div class="filters">
                       <ul>
@@ -217,10 +225,12 @@
                                   </span>
                                   <div class="text-button">
                                       <a href="{{ route('home.book.details',['id'=>$book->id]) }}">View Item Details</a>
+                                  </div><br>
+
+
+                                  <div class="">
+                                      <a class="btn btn-primary" href="{{  route('book.borrow',['id'=>$book->id]) }}" >Apply To Borrow</a>
                                   </div>
-                                  {{-- <div class="text-button">
-                                      <a href="details.html">View Item Details</a>
-                                  </div> --}}
                               </div>
                           </div>
                       </div>
