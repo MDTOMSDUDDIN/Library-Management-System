@@ -44,4 +44,17 @@ class HomeController extends Controller
             return redirect()->back()->with('message','Not Enough Books Avilable');
         }
     }
+
+
+    public function book_history(){
+        if(Auth::id()){
+            $userId=Auth::user()->id;
+            $data=Borrow::where('user_id','=',$userId)->get();
+
+            return view('home.book-history',[
+                'data'=>$data,
+            ]);
+        }
+        
+    }
 }

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[HomeController::class,'index']);
 Route::get('/book-details/{id}',[HomeController::class,'book_details'])->name('home.book.details');
 Route::get('/book-borrow/{id}',[HomeController::class,'borrow_book'])->name('book.borrow');
+Route::get('/history/book',[HomeController::class,'book_history'])->name('my.history.book');
 
 Route::middleware([
     'auth:sanctum',
@@ -35,6 +36,7 @@ Route::get('/edit/book/{id}',[AdminController::class,'edit_book'])->name('edit.b
 Route::post('/update/book/{id}',[AdminController::class,'update_book'])->name('update.book');
 Route::get('/borrow/request/book',[AdminController::class,'borrow_book'])->name('borrow.book.request');
 
-Route::get('approved/book/{id}',[AdminController::class,'approve_status'])->name('approved.book.status');
-Route::get('returned/book/{id}',[AdminController::class,'retuened_status'])->name('returned.book.status');
-Route::get('rejected/book/{id}',[AdminController::class,'rejected_status'])->name('rejected.book.status');
+Route::get('/approved/book/{id}',[AdminController::class,'approve_status'])->name('approved.book.status');
+Route::get('/returned/book/{id}',[AdminController::class,'retuened_status'])->name('returned.book.status');
+Route::get('/rejected/book/{id}',[AdminController::class,'rejected_status'])->name('rejected.book.status');
+
