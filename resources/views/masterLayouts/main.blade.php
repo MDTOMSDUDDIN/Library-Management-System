@@ -58,8 +58,8 @@ https://templatemo.com/tm-577-liberty-market
                             <!-- ***** Logo End ***** -->
                             <!-- ***** Menu Start ***** -->
                             <ul class="nav">
-                                <li><a href="index.html" class="active">Home</a></li>
-                                <li><a href="explore.html">Explore</a></li>
+                                <li><a href="{{ route('home.page') }}" class="active">Home</a></li>
+                                <li><a href="{{ route('explode.page') }}">Explore</a></li>
                                 <li><a href="details.html">Item Details</a></li>
                                 <li><a href="create.html">Create Yours</a></li>
       
@@ -94,11 +94,10 @@ https://templatemo.com/tm-577-liberty-market
             </div>
         </header>
         <!-- ***** Header Area End ***** -->
-<div class="currently-market">      
+     
 
     @yield('content')
  
-</div>
 <footer>
     <div class="container">
         <div class="row">

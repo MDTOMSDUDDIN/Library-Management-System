@@ -63,4 +63,12 @@ class HomeController extends Controller
         
         return redirect()->back()->with('message','Book borrow Request Cenceled Successfully ');
     }
+
+
+    public function explore(){
+        $books=Book::all();
+        return view('home.explore',[
+            'books'=>$books,
+        ]);
+    }
 }

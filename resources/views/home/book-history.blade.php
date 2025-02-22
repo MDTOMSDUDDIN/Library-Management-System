@@ -1,6 +1,6 @@
 @extends('masterLayouts.main')
 @section('content')
-
+<div class="currently-market"> 
 <div class="container">
     <style type="text/css">
        .table_deg{
@@ -14,7 +14,7 @@
         font-weight: bold;
         color: white;
         font-size: 18px;
-        padding: 12px;
+        padding: 15px;
        }
        td{
         color: white;
@@ -59,5 +59,7 @@
         </table>
         </div>
     </div>
+</div>
 
-@endsection
+
+    @endsection
