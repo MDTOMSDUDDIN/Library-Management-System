@@ -174,4 +174,47 @@ class AdminController extends Controller
         ]);
     }
 
+    public function approve_status($id){
+        $borrow=Borrow::find($id);
+        $status=$borrow->status;
+        if($status == 'approved'){
+            return redirect()->back();
+        }else{
+            $borrow->status='approved';
+            $borrow->save();
+
+            $bookid= $borrow->book_id;
+            $book=Book::find($bookid);
+            $book_qty = $book->quantity - '1';
+            $book->quantity=$book_qty;
+            $book->save();
+            return redirect()->back();
+        }
+    }
+
+    public function retuened_status($id){
+        $borrow=Borrow::find($id);
+        $status=$borrow->status;
+        if($status == 'returned'){
+            return redirect()->back();
+        }else{
+            $borrow->status='returned';
+            $borrow->save();
+
+            $bookid= $borrow->book_id;
+            $book=Book::find($bookid);
+            $book_qty = $book->quantity + '1';
+            $book->quantity=$book_qty;
+            $book->save();
+            return redirect()->back();
+        }
+    }
+
+    public function rejected_status($id){
+        $borrow=Borrow::find($id);
+        $borrow->status='rejected';
+        $borrow->save();
+        return redirect()->back();
+    }
+
 }

@@ -34,3 +34,7 @@ Route::get('/delete/book/{id}',[AdminController::class,'delete_book'])->name('de
 Route::get('/edit/book/{id}',[AdminController::class,'edit_book'])->name('edit.book');
 Route::post('/update/book/{id}',[AdminController::class,'update_book'])->name('update.book');
 Route::get('/borrow/request/book',[AdminController::class,'borrow_book'])->name('borrow.book.request');
+
+Route::get('approved/book/{id}',[AdminController::class,'approve_status'])->name('approved.book.status');
+Route::get('returned/book/{id}',[AdminController::class,'retuened_status'])->name('returned.book.status');
+Route::get('rejected/book/{id}',[AdminController::class,'rejected_status'])->name('rejected.book.status');
