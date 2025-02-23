@@ -96,21 +96,11 @@ class HomeController extends Controller
         ]);
     }
 
-    // public function cat_search($id){
-
-    //     $category=Category::all();
-    //     $book=Category::with('category_id',$id)->get();
-
-    //     return view('home.explore',[
-    //         'book'=>$book,
-    //         'category'=>$category,
-    //     ]);
-    // }
-
-    public function cat_search($id){
+    public function cat_search($id)
+    {
         $category = Category::all();
         $book = Book::where('category_id', $id)->get();
-        
+
         return view('home.explore', [
             'book' => $book,
             'category' => $category,
