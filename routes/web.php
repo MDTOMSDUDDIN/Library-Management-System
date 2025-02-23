@@ -4,6 +4,9 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/search',[HomeController::class,'search'])->name('search');
+Route::get('/cat_search/{id}',[HomeController::class,'cat_search'])->name('category.search');
+
 Route::get('/',[HomeController::class,'index'])->name('home.page');
 Route::get('/book-details/{id}',[HomeController::class,'book_details'])->name('home.book.details');
 Route::get('/book-borrow/{id}',[HomeController::class,'borrow_book'])->name('book.borrow');
@@ -24,7 +27,7 @@ board');
 });
 
 
-Route::get('/home',[AdminController::class,'index']);
+Route::get('/home',[AdminController::class,'index'])->name('admin.home.page');
 Route::get('/category_page',[AdminController::class,'category_page'])->name('admin.category.page');
 Route::post('/add/category',[AdminController::class,'add_category'])->name('admin.add.category');
 Route::get('/category/delete/{id}',[AdminController::class,'Delete_category'])->name('admin.category.Delete');
